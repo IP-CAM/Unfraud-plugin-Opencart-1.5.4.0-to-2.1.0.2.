@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "type": "opencart-extension",
   "keywords": ["unfraud", "opencart"],
-  "homepage": "https://github.com/unfraud/unfraud-opencart",
+  "homepage": "https://github.com/Unfraud-labs/Unfraud-Opencart",
   "authors": [
     {
     "name": "Unfraud",
@@ -13,7 +13,7 @@
     ],
     "support": {
     "email": "support@unfraud.com",
-    "issues": "https://github.com/unfraud/opencart-plugin/issues"
+    "issues": "https://github.com/Unfraud-labs/Unfraud-Opencart/issues"
     },
     "repositories": [
     {
