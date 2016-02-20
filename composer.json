@@ -1,0 +1,47 @@
+{
+  "name": "unfraud/unfraud-opencart",
+  "description": "Unfraud Module for OpenCart",
+  "version": "1.0.0",
+  "type": "opencart-extension",
+  "keywords": ["unfraud", "opencart"],
+  "homepage": "https://github.com/unfraud/unfraud-opencart",
+  "authors": [
+    {
+    "name": "Unfraud",
+    "homepage": "https://unfraud.com"
+  }
+    ],
+    "support": {
+    "email": "support@unfraud.com",
+    "issues": "https://github.com/unfraud/opencart-plugin/issues"
+    },
+    "repositories": [
+    {
+        "type": "package",
+        "package": {
+          "name": "opencart/opencart",
+          "version": "2.1.0.1",
+          "dist": {
+            "url": "https://github.com/opencart/opencart/archive/2.1.0.1.zip",
+            "type": "zip"
+          },
+          "source": {
+          "url": "https://github.com/opencart/opencart",
+          "type": "git",
+          "reference": "7911c76c43e29ddc1e4168f36dff6a0be6179719"
+        }
+      }
+    }
+  ],
+  "require": {
+  "php" : ">=5.3.0"
+  },
+    "require-dev": {
+    "opencart/opencart" : "2.0.0.0"
+  },
+    "minimum-stability": "stable",
+    "config": {
+    "bin-dir": "bin/",
+    "preferred-install": "source"
+  }
+}
