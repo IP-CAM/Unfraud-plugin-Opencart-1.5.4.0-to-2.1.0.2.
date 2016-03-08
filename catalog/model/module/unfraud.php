@@ -11,7 +11,7 @@ class ModelModuleUnfraud extends Model {
 	const FRAUD_API_RESPONSE = "fraud";
 	const SUCCESS_API_RESPONSE = 1;
 
-	const BEA_URL = "//www.unfraud.com/bea/bea.js";
+	const BEA_URL = "//bea.unfraud.com/bea.js";
 
 	protected $_analyticsUrl = 'https://www.unfraud.com/unfraud_analytics/analytics.php?getSession=true';
 	protected $_eventsUrl = 'http://api.unfraud.com/events';
