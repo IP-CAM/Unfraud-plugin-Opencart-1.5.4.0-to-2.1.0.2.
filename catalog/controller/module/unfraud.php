@@ -64,26 +64,32 @@ class ControllerModuleUnfraud extends Controller {
                        "unfraud_plugin" => "unfraud-opencart_1.0.0"
                    );
 
-                   $result = $this->model_module_unfraud->sendRequest($unfraud_data);
 
-                   if ($result->success == $modelClass::SUCCESS_API_RESPONSE) {
-                       $fraud = false;
-                       if ($result->unfraud_label != $modelClass::SAFE_API_RESPONSE) {
-                           $this->model_module_unfraud->log("Unfraud Response flagged as '{$result->unfraud_label}'");
-                           $fraud = true;
+                   try{
+                       $result = $this->model_module_unfraud->sendRequest($unfraud_data);
+
+                       if ($result->success == $modelClass::SUCCESS_API_RESPONSE) {
+                           $fraud = false;
+                           if ($result->unfraud_label != $modelClass::SAFE_API_RESPONSE) {
+                               $this->model_module_unfraud->log("Unfraud Response flagged as '{$result->unfraud_label}'");
+                               $fraud = true;
+                           }
+                           // we cannot add exception as well as in Magento module managed because Opencart hasn't transactions
+                           // on Checkout actions and we cannot rollback to prevoius situation. Thus we left commented the follow code lines.
+                           //else if ($result->unfraud_label == $modelClass::SAFE_API_RESPONSE && $result->unfraud_label >= (int)$threshold) {
+                           //    $this->model_module_unfraud->log("Unfraud Response score ({$result->unfraud_label}) higher than default setted in configuration settings ($threshold)");
+                           //    $fraud = true;
+                           //}
+                           /*if ($fraud == true) {
+                               $this->session->data['error'] = $this->language->get("checkout_error_text");
+                               $this->response->redirect($this->url->link('checkout/checkout', '', 'SSL'));
+                           }*/
+                       } else {
+                           $this->model_module_unfraud->logError("Unfraud API Error");
                        }
-                       // we cannot add exception as well as in Magento module managed because Opencart hasn't transactions
-                       // on Checkout actions and we cannot rollback to prevoius situation. Thus we left commented the follow code lines.
-                       //else if ($result->unfraud_label == $modelClass::SAFE_API_RESPONSE && $result->unfraud_label >= (int)$threshold) {
-                       //    $this->model_module_unfraud->log("Unfraud Response score ({$result->unfraud_label}) higher than default setted in configuration settings ($threshold)");
-                       //    $fraud = true;
-                       //}
-                       /*if ($fraud == true) {
-                           $this->session->data['error'] = $this->language->get("checkout_error_text");
-                           $this->response->redirect($this->url->link('checkout/checkout', '', 'SSL'));
-                       }*/
-                   } else {
-                       $this->model_module_unfraud->logError("Unfraud API Error");
+                   }
+                   catch(Exception $e){
+                       $this->model_module_unfraud->logError($e->getMessage());
                    }
                }
            } else {
