@@ -19,7 +19,7 @@ Installation Instructions
 ### Via modman
 
 - Install [modman](https://github.com/colinmollenhour/modman)
-- Use the command from your OpenCart installation folder: `modman clone https://github.com/Unfraud/Unfraud-Opencart/`
+- Use the command from your OpenCart installation folder: `modman clone https://github.com/Unfraud-labs/Unfraud-Opencart/`
 
 ### Via composer
 - Install [composer](http://getcomposer.org/download/)
